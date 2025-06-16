@@ -5,5 +5,4 @@ class Config:
     self.title = "Mario Bros"
     self.fps = 60
 
-# Create a singleton instance
 config = Config()
