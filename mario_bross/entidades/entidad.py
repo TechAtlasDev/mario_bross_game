@@ -23,9 +23,11 @@ class Entidad:
     Actualiza el estado de la entidad. Lógica de IA o física básica va aquí.
     """
     self.vel_y += self.gravedad
+    # para que no caiga en picada, limitamos la cantidad maxima de caida
     if self.vel_y > 10:
-        self.vel_y = 10
-  
+      self.vel_y = 10
+
+
   def _render_(self, screen):
     """
     Dibuja la entidad en pantalla. Debe ser implementado por las clases hijas.

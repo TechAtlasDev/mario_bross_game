@@ -14,7 +14,7 @@ class Pantalla:
   def actualizar(self): 
     for entidad in self.entidades: 
     
-      entidad.accionar() 
+      entidad.accionar() # el que ejecuta la gravedad
     
       entidad.rect.x += entidad.vel_x 
       for estructura in self.estructuras: 
