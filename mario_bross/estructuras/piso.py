@@ -7,10 +7,10 @@ class Piso:
     self.alto = alto
     self.color = color
 
-  def make(self):
+  def crear_rectangulo(self):
     return pygame.Rect(self.coordenadas[0], self.coordenadas[1], self.ancho, self.alto)
 
-  def draw(self, screen):
-    rect = self.make()
+  def dibujar(self, screen):
+    rect = self.crear_rectangulo()
     pygame.draw.rect(screen, self.color, rect)
   

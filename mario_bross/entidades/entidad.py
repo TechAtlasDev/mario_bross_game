@@ -18,13 +18,13 @@ class Entidad:
     # Atributos visuales
     self.color = color
 
-  def handle_events(self, events, keys_pressed):
+  def manejar_eventos(self, events, keys_pressed):
     """
     Maneja los eventos del teclado. Sobrescribir en las clases hijas.
     """
     pass
 
-  def update(self):
+  def accionar(self):
     """
     Actualiza el estado de la entidad. Lógica de IA o física básica va aquí.
     """

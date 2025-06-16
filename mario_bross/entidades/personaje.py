@@ -5,7 +5,7 @@ class Personaje(Entidad):
   def __init__(self, x, y, width, height, velocidad=5, color=(255, 0, 0)) -> None:
     super().__init__(x, y, width, height, velocidad, color)
 
-  def handle_events(self, events, keys_pressed):
+  def manejar_eventos(self, events, keys_pressed):
     if keys_pressed[pygame.K_LEFT]:
       self.mover_izquierda()
     elif keys_pressed[pygame.K_RIGHT]:
