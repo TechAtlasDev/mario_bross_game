@@ -2,26 +2,21 @@ from mario_bross.entidades.entidad import Entidad
 import pygame
 
 class Personaje(Entidad):
-  def __init__(self, coordenadas, velocidad=20, color=(255, 0, 0)) -> None:
-    super().__init__(coordenadas, velocidad, color)
-    self.radio = 30
+  def __init__(self, x, y, width, height, velocidad=5, color=(255, 0, 0)) -> None:
+    super().__init__(x, y, width, height, velocidad, color)
 
-  def handle_events(self, events):
-    if events[pygame.K_RIGHT]:
-      self.mover_derecha()
-    if events[pygame.K_LEFT]:
+  def handle_events(self, events, keys_pressed):
+    if keys_pressed[pygame.K_LEFT]:
       self.mover_izquierda()
-    if events[pygame.K_UP]:
-      self.mover_arriba()
-    if events[pygame.K_DOWN]:
-      self.mover_abajo()
-    if events[pygame.K_SPACE]:
-      self.saltar()
+    elif keys_pressed[pygame.K_RIGHT]:
+      self.mover_derecha()
+    else:
+      self.vel_x = 0
 
-  def _render_(self):
-    pygame.draw.circle(
-      pygame.display.get_surface(),
-      self.color,
-      self.coordenadas,
-      self.radio
-    )
+    for event in events:
+      if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
+          self.saltar()
+
+  def _render_(self, screen):
+    pygame.draw.rect(screen, self.color, self.rect)

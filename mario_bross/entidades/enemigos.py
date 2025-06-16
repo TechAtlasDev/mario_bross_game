@@ -2,14 +2,12 @@ import pygame
 from mario_bross.entidades.entidad import Entidad
 
 class Enemigo(Entidad):
-  def __init__(self, coordenadas, velocidad=20, color=(0, 255, 0)) -> None:
-    super().__init__(coordenadas, velocidad, color)
-    self.radio = 20
+  def __init__(self, x, y, width, height, velocidad=2, color=(150, 75, 0)) -> None:
+    super().__init__(x, y, width, height, velocidad, color)
 
-  def _render_(self):
-    pygame.draw.circle(
-      pygame.display.get_surface(),
-      self.color,
-      self.coordenadas,
-      self.radio
-    )
+  def update(self):
+    super().update()
+    self.mover_derecha()
+
+  def _render_(self, screen):
+    pygame.draw.rect(screen, self.color, self.rect)

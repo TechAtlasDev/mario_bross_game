@@ -1,59 +1,57 @@
 import pygame
 
 class Entidad:
-  def __init__(self, coordenadas, velocidad=20, color=(255, 255, 255)) -> None:
-    self.coordenadas = coordenadas
+  def __init__(self, x, y, width, height, velocidad=5, color=(255, 255, 255)) -> None:
+    # Atributos de posición y tamaño
+    self.rect = pygame.Rect(x, y, width, height)
+
+    # Atributos de movimiento
     self.velocidad = velocidad
-    self.unidades_salto = 30
-    self.en_salto = False
-    self.unidades_locales = self.unidades_salto
+    self.vel_x = 0
+    self.vel_y = 0
+    self.en_suelo = False
+
+    # Atributos de física
+    self.fuerza_salto = -15
+    self.gravedad = 0.8
+
+    # Atributos visuales
     self.color = color
 
-  def handle_events(self, events):
+  def handle_events(self, events, keys_pressed):
     """
-    Maneja los eventos del teclado, por defecto no hace nada
+    Maneja los eventos del teclado. Sobrescribir en las clases hijas.
     """
     pass
 
-  def draw(self, screen):
-    if self.en_salto:
-      self.mover_arriba()
-      self.unidades_locales -= 1
-    if self.unidades_locales <= 0:
-      self.en_salto = False
-      self.unidades_locales = self.unidades_salto
-    self._render_()
+  def update(self):
+    """
+    Actualiza el estado de la entidad. Lógica de IA o física básica va aquí.
+    """
+    # Aplicamos la gravedad por defecto
+    self.vel_y += self.gravedad
+    if self.vel_y > 10: # Velocidad terminal para no acelerar infinitamente
+        self.vel_y = 10
   
-  def _render_(self):
+  def _render_(self, screen):
+    """
+    Dibuja la entidad en pantalla. Debe ser implementado por las clases hijas.
+    """
     raise NotImplementedError("Debe implementar el metodo _render_")
 
+  def draw(self, screen):
+    self._render_(screen)
+
   def mover_derecha(self):
-    self.coordenadas[0] += self.velocidad
+    self.vel_x = self.velocidad
   
   def mover_izquierda(self):
-    self.coordenadas[0] -= self.velocidad
-
-  def mover_arriba(self):
-    self.coordenadas[1] -= self.velocidad
-
-  def mover_abajo(self):
-    self.coordenadas[1] += self.velocidad
+    self.vel_x = -self.velocidad
 
   def saltar(self):
-    print (f"En salto: {self.en_salto}")
-    if self.en_salto == False:
-      self.en_salto = True
+    if self.en_suelo:
+        self.vel_y = self.fuerza_salto
+        self.en_suelo = False
 
-  def make(self):
-    return pygame.Rect(self.coordenadas[0], self.coordenadas[1], self.radio, self.radio)
-  
-  def colisiona_con(self, estructura):
-    return self.make().colliderect(estructura.make())
-
-  def colisiona_conjunto(self, estructuras):
-    result = False
-    for estructura in estructuras:
-      if self.colisiona_con(estructura):
-        result = True
-        break
-    return result
+  def cambiar_direccion(self):
+      self.velocidad *= -1
