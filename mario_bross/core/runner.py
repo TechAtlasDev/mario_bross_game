@@ -15,37 +15,37 @@ def run_game():
   pantalla = Pantalla()
   
   personaje = Personaje(100, 450, 40, 40)
-  enemigo = Enemigo(300, 460, 40, 40, velocidad=2)
-  pantalla.add_entity(personaje)
-  pantalla.add_entity(enemigo)
+  enemigo = Enemigo(300, 300, 40, 40, velocidad=2)
+  pantalla.anadir_entidad(personaje)
+  pantalla.anadir_entidad(enemigo)
 
   piso = Piso([0, 500], 800, 100, color=(34, 139, 34))
-  pantalla.add_structure(piso)
+  pantalla.anadir_estructura(piso)
 
 
   obstaculo1 = Piso([200, 400], 100, 100, color=(139, 69, 19))
-  pantalla.add_structure(obstaculo1)
+  pantalla.anadir_estructura(obstaculo1)
 
   obstaculo2 = Piso([400, 300], 100, 100, color=(139, 69, 19))
-  pantalla.add_structure(obstaculo2)
+  pantalla.anadir_estructura(obstaculo2)
 
  ## obstaculo3 = Piso([600, 400], 100, 100, color=(139, 69, 19))
- ## pantalla.add_structure(obstaculo3)
+ ## pantalla.anadir_estructura(obstaculo3)
 
 
   plataforma1 = Piso([150, 250], 150, 20, color=(169, 169, 169))
-  pantalla.add_structure(plataforma1)
+  pantalla.anadir_estructura(plataforma1)
 
   plataforma2 = Piso([500, 200], 150, 20, color=(169, 169, 169))
-  pantalla.add_structure(plataforma2)
+  pantalla.anadir_estructura(plataforma2)
 
   plataforma3 = Piso([300, 150],150,20,color=(169, 169, 169))
-  pantalla.add_structure(plataforma3)
+  pantalla.anadir_estructura(plataforma3)
 
   limite1=Piso([-10,0], 10, 600, color=(135, 206, 235))
-  pantalla.add_structure(limite1)
+  pantalla.anadir_estructura(limite1)
 
   limite2=Piso([800,0], 10, 600, color=(135, 206, 235))
-  pantalla.add_structure(limite2)
+  pantalla.anadir_estructura(limite2)
 
   game.run(pantalla)

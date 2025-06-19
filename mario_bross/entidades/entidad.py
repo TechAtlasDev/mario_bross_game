@@ -9,19 +9,13 @@ class Entidad:
     self.en_suelo = False
 
     self.fuerza_salto = -15
-    self.gravedad = 0.8
+    self.gravedad = 1
     self.color = color
 
   def manejar_eventos(self, events, keys_pressed):
-    """
-    Maneja los eventos del teclado. Sobrescribir en las clases hijas.
-    """
     pass
 
   def accionar(self):
-    """
-    Actualiza el estado de la entidad. Lógica de IA o física básica va aquí.
-    """
     self.vel_y += self.gravedad
     # para que no caiga en picada, limitamos la cantidad maxima de caida
     if self.vel_y > 10:
@@ -29,10 +23,7 @@ class Entidad:
 
 
   def _render_(self, screen):
-    """
-    Dibuja la entidad en pantalla. Debe ser implementado por las clases hijas.
-    """
-    raise NotImplementedError("Debe implementar el metodo _render_")
+    pass
 
   def dibujar(self, screen):
     self._render_(screen)
