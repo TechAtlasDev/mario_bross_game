@@ -8,9 +8,10 @@ class Entidad:
     self.vel_y = 0
     self.en_suelo = False
 
-    self.fuerza_salto = -15
+    self.fuerza_salto = -20
     self.gravedad = 0.8
     self.color = color
+    self.esta_muerto = False
 
   def manejar_eventos(self, events, keys_pressed):
     """
@@ -28,14 +29,14 @@ class Entidad:
       self.vel_y = 10
 
 
-  def _render_(self, screen):
+  def _render_(self, screen, camera_y=0):
     """
     Dibuja la entidad en pantalla. Debe ser implementado por las clases hijas.
     """
     raise NotImplementedError("Debe implementar el metodo _render_")
 
-  def dibujar(self, screen):
-    self._render_(screen)
+  def dibujar(self, screen, camera_y=0):
+    self._render_(screen, camera_y)
 
   def mover_derecha(self):
     self.vel_x = self.velocidad
