@@ -26,11 +26,11 @@ def run_game():
   obstaculo1 = Piso([200, 400], 100, 100, color=(139, 69, 19))
   pantalla.add_structure(obstaculo1)
 
-  obstaculo2 = Piso([400, 350], 100, 100, color=(139, 69, 19))
+  obstaculo2 = Piso([400, 300], 100, 100, color=(139, 69, 19))
   pantalla.add_structure(obstaculo2)
 
-  obstaculo3 = Piso([600, 300], 100, 100, color=(139, 69, 19))
-  pantalla.add_structure(obstaculo3)
+ ## obstaculo3 = Piso([600, 400], 100, 100, color=(139, 69, 19))
+ ## pantalla.add_structure(obstaculo3)
 
 
   plataforma1 = Piso([150, 250], 150, 20, color=(169, 169, 169))
@@ -38,5 +38,14 @@ def run_game():
 
   plataforma2 = Piso([500, 200], 150, 20, color=(169, 169, 169))
   pantalla.add_structure(plataforma2)
+
+  plataforma3 = Piso([300, 150],150,20,color=(169, 169, 169))
+  pantalla.add_structure(plataforma3)
+
+  limite1=Piso([-10,0], 10, 600, color=(135, 206, 235))
+  pantalla.add_structure(limite1)
+
+  limite2=Piso([800,0], 10, 600, color=(135, 206, 235))
+  pantalla.add_structure(limite2)
 
   game.run(pantalla)
