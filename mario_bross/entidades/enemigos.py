@@ -9,10 +9,5 @@ class Enemigo(Entidad):
     super().accionar()
     self.mover_derecha()
 
-  def morir(self):
-    self.esta_muerto = True
-
-  def _render_(self, screen, camera_y=0):
-    displaced_rect = self.rect.copy()
-    displaced_rect.y -= camera_y
-    pygame.draw.rect(screen, self.color, displaced_rect)
+  def _render_(self, screen):
+    pygame.draw.rect(screen, self.color, self.rect)
