@@ -18,9 +18,9 @@ class Game:
           self.running = False
       
       keys_pressed = pygame.key.get_pressed()
-      pantalla.handle_events(events, keys_pressed)
+      pantalla.manejar_eventos(events, keys_pressed)
 
-      pantalla.update()
+      pantalla.actualizar()
 
       pantalla.draw(self.screen)
       pygame.display.flip()

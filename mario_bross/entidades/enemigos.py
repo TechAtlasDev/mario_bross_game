@@ -5,8 +5,8 @@ class Enemigo(Entidad):
   def __init__(self, x, y, width, height, velocidad=2, color=(150, 75, 0)) -> None:
     super().__init__(x, y, width, height, velocidad, color)
 
-  def update(self):
-    super().update()
+  def accionar(self):
+    super().accionar()
     self.mover_derecha()
 
   def _render_(self, screen):
